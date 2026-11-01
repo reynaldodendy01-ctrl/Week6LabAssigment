@@ -9,12 +9,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Android
+import androidx.compose.material.icons.filled.CheckBoxOutlineBlank
 import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.material.icons.filled.Code
-import androidx.compose.material.icons.filled.People
-import androidx.compose.material.icons.filled.PhoneIphone
-import androidx.compose.material.icons.filled.Security
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -28,6 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.reyy.week6labassigment.viewmodel.CampusViewModel
+import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.PhoneIphone
+import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.Star
 
 @Composable
 fun ProfileDashboardScreen(viewModel: CampusViewModel, navController: NavController) {
@@ -91,12 +92,35 @@ fun ProfileDashboardScreen(viewModel: CampusViewModel, navController: NavControl
             }
 
             item {
-                Row(modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(
+                        modifier = Modifier.weight(1f),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                         Icon(Icons.Default.Star, contentDescription = null, tint = Color(0xFF2563EB), modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Semua Komunitas yang Diikuti (${joinedCommunities.size})", fontWeight = FontWeight.Bold, fontSize = 14.sp, color = Color.Black)
+                        Text(
+                            text = "Semua Komunitas yang Diikuti (${joinedCommunities.size})",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            color = Color.Black,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
                     }
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Status: Joined",
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF2563EB),
+                        maxLines = 1,
+                        softWrap = false
+                    )
                 }
             }
 
@@ -162,10 +186,35 @@ fun ProfileDashboardScreen(viewModel: CampusViewModel, navController: NavControl
 
             item {
                 Spacer(modifier = Modifier.height(16.dp))
-                Row(modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Default.Code, contentDescription = null, tint = Color(0xFF2563EB), modifier = Modifier.size(18.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Row(
+                        modifier = Modifier.weight(1f),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.CheckBoxOutlineBlank, contentDescription = null, tint = Color(0xFF2563EB), modifier = Modifier.size(18.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = "Semua Proyek Mahasiswa (${projects.size})",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            color = Color.Black,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Semua Proyek Mahasiswa (${projects.size})", fontWeight = FontWeight.Bold, fontSize = 14.sp, color = Color.Black)
+                    Text(
+                        text = "Total: ${projects.size} Proyek",
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF2563EB),
+                        maxLines = 1,
+                        softWrap = false
+                    )
                 }
             }
 
